@@ -152,7 +152,7 @@ StageCollision:
 StageMaps:
 	dc.w	StageMapFg-*
 	dc.w	StageMapBg-StageMaps
-	dc.w	StageMapNull-StageMaps
+	dc.w	StageMapBg2-StageMaps
 	dc.w	StageMapUnk1-StageMaps
 	dc.w	StageMapUnk2-StageMaps
 	dc.w	StageMapUnk3-StageMaps
@@ -164,7 +164,7 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 	dc.w	StageMapFg-StageMaps
 	dc.w	StageMapBg-StageMaps
-	dc.w	StageMapNull-StageMaps
+	dc.w	StageMapBg2-StageMaps
 	dc.w	StageMapUnk1-StageMaps
 	dc.w	StageMapUnk2-StageMaps
 	dc.w	StageMapUnk3-StageMaps
@@ -176,7 +176,7 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 	dc.w	StageMapFg-StageMaps
 	dc.w	StageMapBg-StageMaps
-	dc.w	StageMapNull-StageMaps
+	dc.w	StageMapBg2-StageMaps
 	dc.w	StageMapUnk1-StageMaps
 	dc.w	StageMapUnk2-StageMaps
 	dc.w	StageMapUnk3-StageMaps
@@ -192,11 +192,11 @@ StageMapFg:
 	even
 
 StageMapBg:
-	incbin	"src/maps/r51d/background.bin"
+	incbin	"src/maps/r51d/bg_inside.bin"
 	even
 
-StageMapNull:
-	incbin	"src/maps/r5_background.bin"
+StageMapBg2:
+	incbin	"src/maps/r51d/bg_outside.bin"
 	even
 
 StageMapUnk1:

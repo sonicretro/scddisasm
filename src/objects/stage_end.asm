@@ -656,8 +656,8 @@ ResultsActive:
 ; ------------------------------------------------------------------------------
 
 LoadCapsulePalette:
-	move.w	#7,d6
-	lea	word_20A3A6,a1
+	move.w	#$20/4-1,d6
+	lea	CapsulePalette,a1
 	lea	palette+$20,a2
 
 loc_20A39E:
@@ -667,8 +667,9 @@ loc_20A39E:
 
 ; ------------------------------------------------------------------------------
 
-word_20A3A6:
-	dc.w	$A22, 0, $644, $A66, $C88, $EAA, $EEE, $AE8, $8A6, $664, $442, $220, $EE, $AA, $44, $E
+CapsulePalette:
+	incbin	"src/palettes/capsule.pal"
+	even
 
 BigRingFlashAnims:
 	include	"src/anims/big_ring_flash.asm"

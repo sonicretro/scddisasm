@@ -25,7 +25,7 @@ loc_2001A8:
 	move.l	4(a0,d0.w),(a1)
 
 loc_2001BA:
-	adda.w	#$18,a0
+	adda.w	#word_20025C-word_200244,a0
 	subq.b	#1,palette_cycle_timers+1
 	bpl.s	loc_2001F2
 	move.b	#5,palette_cycle_timers+1
@@ -102,6 +102,8 @@ word_200244:
 	dc.w	$444
 	dc.w	$444
 	dc.w	$888
+
+word_20025C:
 	dc.w	$CAE
 	dc.w	$C8C
 	dc.w	$A44

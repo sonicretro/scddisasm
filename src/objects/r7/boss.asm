@@ -1132,20 +1132,21 @@ loc_20C836:
 ; ------------------------------------------------------------------------------
 
 sub_20C85E:
-	lea	word_20C886(pc),a3
+	lea	AmyRosePalette(pc),a3
 	lea	palette+$20,a4
 	movem.l	(a3)+,d0-d3
 	movem.l	d0-d3,(a4)
-	movem.l	d0-d3,-$80(a4)
+	movem.l	d0-d3,water_palette-palette(a4)
 	movem.l	(a3)+,d0-d3
 	movem.l	d0-d3,$10(a4)
-	movem.l	d0-d3,-$70(a4)
+	movem.l	d0-d3,$10+(water_palette-palette)(a4)
 	rts
 
 ; ------------------------------------------------------------------------------
 
-word_20C886:
-	dc.w	0, 0, $628, $84A, $E6E, $EAE, $EEE, $AAA, $888, $444, $8AE, $6C, $C2, $80, $806, $E
+AmyRosePalette:
+	incbin	"src/palettes/amy_rose.pal"
+	even
 
 ; ------------------------------------------------------------------------------
 

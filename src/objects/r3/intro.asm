@@ -187,7 +187,7 @@ loc_20E036:
 
 loc_20E04A:
 	move.b	#-1,amy_captured
-	lea	StagePalette,a3
+	lea	StagePalette1,a3
 	bsr.w	sub_20E2C8
 	jmp	DeleteObject
 
@@ -228,7 +228,7 @@ AmyRoseObject:
 	move.w	off_20E0D0(pc,d0.w),d0
 	jsr	off_20E0D0(pc,d0.w)
 	bsr.w	sub_20E300
-	cmpi.w	#$4C0,8(a1)
+	cmpi.w	#$4C0,obj.x(a1)
 	bcc.w	loc_20E04A
 	jmp	DrawObject
 
@@ -276,7 +276,7 @@ AmyRoseObject_0_Routine2:
 	move.w	obj.var_34(a0),d0
 	beq.s	loc_20E14E
 	movea.w	d0,a2
-	tst.b	$3D(a2)
+	tst.b	obj.var_3d(a2)
 	beq.s	loc_20E14E
 	move.b	#4,obj.routine(a0)
 	move.w	#$7D,d0
@@ -443,7 +443,7 @@ locret_20E2C2:
 ; ------------------------------------------------------------------------------
 
 sub_20E2C4:
-	lea	word_20E2E0(pc),a3
+	lea	AmyRosePalette(pc),a3
 
 ; ------------------------------------------------------------------------------
 
@@ -457,8 +457,9 @@ sub_20E2C8:
 
 ; ------------------------------------------------------------------------------
 
-word_20E2E0:
-	dc.w	0, 0, $628, $84A, $E6E, $EAE, $EEE, $AAA, $888, $444, $8AE, $6C, $C2, $80, $806, $E
+AmyRosePalette:
+	incbin	"src/palettes/amy_rose.pal"
+	even
 
 ; ------------------------------------------------------------------------------
 

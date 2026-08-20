@@ -45,7 +45,7 @@ loc_2001EC:
 	move.w	(a2,d0.w),(a3)
 	add.w	d1,d1
 	add.w	d0,d1
-	move.w	(a2,d1.w),-$80(a3)
+	move.w	(a2,d1.w),water_palette-palette(a3)
 
 loc_20020A:
 	adda.w	#1,a4

@@ -69,28 +69,34 @@ unk_20023A:
 	dc.b	4, 2
 	dc.b	4, 1
 	dc.b	4, 0
+
 unk_200242:
 	dc.w	$6AE
 	dc.w	$46C
 	dc.w	$22A
+
 unk_200248:
 	dc.b	$27, 3
 	dc.b	4, 2
 	dc.b	4, 1
 	dc.b	4, 0
+
 unk_200250:
 	dc.w	$46C
 	dc.w	$22A
 	dc.w	$6AE
+
 unk_200256:
 	dc.b	$28, 3
 	dc.b	4, 2
 	dc.b	4, 1
 	dc.b	4, 0
+
 unk_20025E:
 	dc.w	$22A
 	dc.w	$6AE
 	dc.w	$46C
+
 unk_200264:
 	dc.b	$3E, 8
 	dc.b	$63, 0
@@ -101,10 +107,12 @@ unk_200264:
 	dc.b	2, 1
 	dc.b	2, 2
 	dc.b	2, 1
+
 unk_200276:
 	dc.w	$CC0
 	dc.w	$EEE
 	dc.w	0
+
 unk_20027C:
 	dc.b	$3F
 	dc.b	2
@@ -112,9 +120,11 @@ unk_20027C:
 	dc.b	0
 	dc.b	$F
 	dc.b	1
+
 unk_200282:
 	dc.w	$E0
 	dc.w	$EE
+
 unk_200286:
 	dc.b	$31, 7
 	dc.b	$16, 0
@@ -124,9 +134,11 @@ unk_200286:
 	dc.b	2, 0
 	dc.b	2, 1
 	dc.b	$21, 0
+
 unk_200296:
 	dc.w	0
 	dc.w	$EEE
+
 unk_20029A:
 	dc.b $32, 6
 	dc.b	2, 0
@@ -135,6 +147,7 @@ unk_20029A:
 	dc.b	2, 1
 	dc.b	2, 0
 	dc.b	$37, 1
+	
 unk_2002A8:
 	dc.w	$EEE
 	dc.w	0

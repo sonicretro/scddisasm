@@ -456,7 +456,6 @@ loc_20057C:
 
 ; ------------------------------------------------------------------------------
 
-
 	BossFadeObjectsFromWhite:
 		move.w	#$2F,palette_fade_start
 		moveq	#0,d0

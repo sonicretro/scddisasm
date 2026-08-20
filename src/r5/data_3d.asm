@@ -196,7 +196,7 @@ StageMapFg:
 	even
 
 StageMapBg:
-	incbin	"src/maps/r53d/background.bin"
+	incbin	"src/maps/r53d/bg_inside.bin"
 	even
 
 StageMapNull:

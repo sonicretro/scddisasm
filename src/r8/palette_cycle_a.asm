@@ -75,28 +75,34 @@ byte_200256:
 	dc.b	4, 0
 	dc.b	4, 1
 	dc.b	4, 2
+	
 word_20025E:
 	dc.w	$404
 	dc.w	$808
 	dc.w	$E0E
+
 byte_200264:
 	dc.b	$27, 3
 	dc.b	4, 0
 	dc.b	4, 1
 	dc.b	4, 2
+
 word_20026C:
 	dc.w	$E0E
 	dc.w	$404
 	dc.w	$808
+
 byte_200272:
 	dc.b	$28, 3
 	dc.b	4, 0
 	dc.b	4, 1
 	dc.b	4, 2
+
 word_20027A:
 	dc.w	$808
 	dc.w	$E0E
 	dc.w	$404
+
 byte_200280:
 	dc.b	$31, $C
 	dc.b	3, 0
@@ -111,9 +117,11 @@ byte_200280:
 	dc.b	3, 1
 	dc.b	3, 1
 	dc.b	$3C, 1
+
 word_20029A:
 	dc.w	$E60
 	dc.w	0
+
 byte_20029E:
 	dc.b	$32, $C
 	dc.b	3, 0
@@ -128,9 +136,11 @@ byte_20029E:
 	dc.b	3, 0
 	dc.b	3, 0
 	dc.b	$3C, 0
+
 word_2002B8:
 	dc.w	0
 	dc.w	$E60
+
 byte_2002BC:
 	dc.b	$33, $C
 	dc.b	3, 0
@@ -145,9 +155,11 @@ byte_2002BC:
 	dc.b	3, 0
 	dc.b	3, 1
 	dc.b	$3C, 0
+
 word_2002D6:
 	dc.w	0
 	dc.w	$E60
+
 byte_2002DA:
 	dc.b	$31, 9
 	dc.b	$A, 0
@@ -159,12 +171,14 @@ byte_2002DA:
 	dc.b	$A, 2
 	dc.b	$A, 1
 	dc.b	$A, 0
+
 word_2002EE:
 	dc.w	$E0
 	dc.w	$A0
 	dc.w	$60
 	dc.w	$20
 	dc.w	0
+
 byte_2002F8:
 	dc.b	$32, 9
 	dc.b	$A, 0
@@ -176,17 +190,20 @@ byte_2002F8:
 	dc.b	$A, 2
 	dc.b	$A, 1
 	dc.b	$A, 0
+
 word_20030C:
 	dc.w	$AE
 	dc.w	$6E
 	dc.w	$E
 	dc.w	6
 	dc.w	0
+
 byte_200316:
 	dc.b	$33, 3
 	dc.b	5, 0
 	dc.b	5, 1
 	dc.b	5, 2
+
 word_20031E:
 	dc.w	$EE
 	dc.w	$E
