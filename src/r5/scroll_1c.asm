@@ -163,7 +163,8 @@ loc_202A7C:
 ; ------------------------------------------------------------------------------
 
 StagePlayerSpawn:
-	dc.b	0, $40, 2, $6C
+	incbin	"src/maps/r5/spawn_1c.bin"
+	even
 
 unk_202A94:
 	dc.b	$7F

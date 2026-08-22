@@ -163,7 +163,8 @@ loc_2027E2:
 ; ------------------------------------------------------------------------------
 
 StagePlayerSpawn:
-	dc.b	0, $60, 3, $EC
+	incbin	"src/maps/r3/spawn_1b.bin"
+	even
 
 unk_2027FA:
 	dc.b	$7F

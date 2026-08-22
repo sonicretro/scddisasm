@@ -127,7 +127,9 @@ loc_2029E8:
 ; ------------------------------------------------------------------------------
 
 StagePlayerSpawn:
-	dc.w	$30, $6A0
+	incbin	"src/maps/r8/spawn_1a.bin"
+	even
+
 byte_202A00:
 	dc.b	$7F, $7F, $7F, $7F
 
