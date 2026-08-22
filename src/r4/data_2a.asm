@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r42a_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r42a/chunks.bin"
+	incbin	"src/maps/r4/chunks_2a.bin"
 	even
 
 SpikeBallGfx:
@@ -202,7 +202,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r42a/collision.bin"
+	incbin	"src/maps/r4/collision_2a.bin"
 	even
 
 StageMaps:
@@ -244,11 +244,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r42a/foreground.bin"
+	incbin	"src/maps/r4/foreground_2a.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r42a/background.bin"
+	incbin	"src/maps/r4/background_2a.bin"
 	even
 
 StageMapNull:
@@ -276,11 +276,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r42a/blocks.nem"
+	incbin	"src/maps/r4/blocks_2a.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r42a/gfx.nem"
+	incbin	"src/maps/r4/gfx_2a.nem"
 	even
 
 PowerupAnims:

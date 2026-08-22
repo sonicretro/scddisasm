@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r11a_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r11a/chunks.bin"
+	incbin	"src/maps/r1/chunks_1a.bin"
 	even
 
 PlayerSprites:
@@ -234,7 +234,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r11a/collision.bin"
+	incbin	"src/maps/r1/collision_1a.bin"
 	even
 
 StageMaps:
@@ -276,11 +276,11 @@ StageMaps:
 	dc.w	StageMapNull-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r11a/foreground.bin"
+	incbin	"src/maps/r1/foreground_1a.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r11a/background.bin"
+	incbin	"src/maps/r1/background_1a.bin"
 	even
 
 StageMapNull:
@@ -298,11 +298,11 @@ Boost3dGfx:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r11a/blocks.nem"
+	incbin	"src/maps/r1/blocks_1a.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r11a/gfx.nem"
+	incbin	"src/maps/r1/gfx_1a.nem"
 	even
 
 PowerupAnims:

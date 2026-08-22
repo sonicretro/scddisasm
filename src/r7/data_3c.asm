@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r73c_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r73c/chunks.bin"
+	incbin	"src/maps/r7/chunks_3c.bin"
 	even
 
 PowerupAnims:
@@ -258,7 +258,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r73c/collision.bin"
+	incbin	"src/maps/r7/collision_3c.bin"
 	even
 
 StageMaps:
@@ -300,11 +300,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r73c/foreground.bin"
+	incbin	"src/maps/r7/foreground_3c.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r73c/background.bin"
+	incbin	"src/maps/r7/background_3c.bin"
 	even
 
 StageMapNull:
@@ -332,11 +332,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r73c/blocks.nem"
+	incbin	"src/maps/r7/blocks_3c.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r73c/gfx.nem"
+	incbin	"src/maps/r7/gfx_3c.nem"
 	even
 
 SwingGfx:

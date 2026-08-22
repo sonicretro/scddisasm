@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r31a_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r31a/chunks.bin"
+	incbin	"src/maps/r3/chunks_1a.bin"
 	even
 
 StageCollisionAngles:
@@ -24,7 +24,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r31a/collision.bin"
+	incbin	"src/maps/r3/collision_1a.bin"
 	even
 
 StageMaps:
@@ -66,11 +66,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r31a/foreground.bin"
+	incbin	"src/maps/r3/foreground_1a.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r31a/background.bin"
+	incbin	"src/maps/r3/background_1a.bin"
 	even
 
 StageMapNull:
@@ -312,11 +312,11 @@ AnimalsGfx:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r31a/blocks.nem"
+	incbin	"src/maps/r3/blocks_1a.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r31a/gfx.nem"
+	incbin	"src/maps/r3/gfx_1a.nem"
 	even
 
 PowerupAnims:

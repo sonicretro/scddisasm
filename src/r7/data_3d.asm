@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r73d_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r73d/chunks.bin"
+	incbin	"src/maps/r7/chunks_3d.bin"
 	even
 
 AmyRoseGfx:
@@ -266,7 +266,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r73d/collision.bin"
+	incbin	"src/maps/r7/collision_3d.bin"
 	even
 
 StageMaps:
@@ -308,11 +308,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r73d/foreground.bin"
+	incbin	"src/maps/r7/foreground_3d.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r73d/background.bin"
+	incbin	"src/maps/r7/background_3d.bin"
 	even
 
 StageMapNull:
@@ -340,11 +340,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r73d/blocks.nem"
+	incbin	"src/maps/r7/blocks_3d.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r73d/gfx.nem"
+	incbin	"src/maps/r7/gfx_3d.nem"
 	even
 
 SwingGfx:

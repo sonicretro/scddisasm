@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r43d_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r43d/chunks.bin"
+	incbin	"src/maps/r4/chunks_3d.bin"
 	even
 
 StageCollisionAngles:
@@ -24,7 +24,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r43d/collision.bin"
+	incbin	"src/maps/r4/collision_3d.bin"
 	even
 
 StageMaps:
@@ -66,11 +66,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r43d/foreground.bin"
+	incbin	"src/maps/r4/foreground_3d.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r43d/background.bin"
+	incbin	"src/maps/r4/background_3d.bin"
 	even
 
 StageMapNull:
@@ -224,11 +224,11 @@ BubbleSprites:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r43d/blocks.nem"
+	incbin	"src/maps/r4/blocks_3d.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r43d/gfx.nem"
+	incbin	"src/maps/r4/gfx_3d.nem"
 	even
 
 PowerupAnims:

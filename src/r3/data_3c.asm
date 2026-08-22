@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r33c_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r33c/chunks.bin"
+	incbin	"src/maps/r3/chunks_3c.bin"
 	even
 
 MetalPlatformGfx:
@@ -254,7 +254,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r33c/collision.bin"
+	incbin	"src/maps/r3/collision_3c.bin"
 	even
 
 StageMaps:
@@ -296,11 +296,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r33c/foreground.bin"
+	incbin	"src/maps/r3/foreground_3c.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r33c/background.bin"
+	incbin	"src/maps/r3/background_3c.bin"
 	even
 
 StageMapNull:
@@ -328,11 +328,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r33c/blocks.nem"
+	incbin	"src/maps/r3/blocks_3c.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r33c/gfx.nem"
+	incbin	"src/maps/r3/gfx_3c.nem"
 	even
 
 PowerupAnims:

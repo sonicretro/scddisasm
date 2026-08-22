@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r42c_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r42c/chunks.bin"
+	incbin	"src/maps/r4/chunks_2c.bin"
 	even
 
 BreakPoleGfxC:
@@ -326,7 +326,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r42c/collision.bin"
+	incbin	"src/maps/r4/collision_2c.bin"
 	even
 
 StageMaps:
@@ -368,11 +368,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r42c/foreground.bin"
+	incbin	"src/maps/r4/foreground_2c.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r42c/background.bin"
+	incbin	"src/maps/r4/background_2c.bin"
 	even
 
 StageMapNull:
@@ -400,11 +400,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r42c/blocks.nem"
+	incbin	"src/maps/r4/blocks_2c.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r42c/gfx.nem"
+	incbin	"src/maps/r4/gfx_2c.nem"
 
 Padding3:
 	incbin	"padding/r42c_e_3.bin"

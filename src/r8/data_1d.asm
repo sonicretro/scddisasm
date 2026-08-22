@@ -8,7 +8,7 @@ Padding1:
 	incbin	"padding/r81d_e_1.bin"
 
 StageChunks:
-	incbin	"src/maps/r81d/chunks.bin"
+	incbin	"src/maps/r8/chunks_1d.bin"
 	even
 
 LaserAnims:
@@ -218,7 +218,7 @@ StageCollisionRows:
 	even
 
 StageCollision:
-	incbin	"src/maps/r81d/collision.bin"
+	incbin	"src/maps/r8/collision_1d.bin"
 	even
 
 StageMaps:
@@ -260,11 +260,11 @@ StageMaps:
 	dc.w	StageMapUnk5-StageMaps
 
 StageMapFg:
-	incbin	"src/maps/r81d/foreground.bin"
+	incbin	"src/maps/r8/foreground_1d.bin"
 	even
 
 StageMapBg:
-	incbin	"src/maps/r81d/background.bin"
+	incbin	"src/maps/r8/background_1d.bin"
 	even
 
 StageMapNull:
@@ -292,11 +292,11 @@ StageMapUnk5:
 	even
 
 StageBlocks:
-	incbin	"src/maps/r81d/blocks.nem"
+	incbin	"src/maps/r8/blocks_1d.nem"
 	even
 
 StageGfx:
-	incbin	"src/maps/r81d/gfx.nem"
+	incbin	"src/maps/r8/gfx_1d.nem"
 	even
 
 PowerupAnims:
