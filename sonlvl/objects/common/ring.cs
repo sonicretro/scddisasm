@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using SonicRetro.SonLVL.API;
+using SonicRetro.SonLVL.API.SCD;
 
 namespace SCDObjectDefinitions.Common
 {
