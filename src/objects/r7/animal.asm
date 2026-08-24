@@ -26,8 +26,8 @@ AnimalObject_1_Routine0:
 	move.l	#AnimalSprites1,obj.sprite_data(a0)
 	move.w	obj.x(a0),obj.var_2a(a0)
 	move.w	obj.y(a0),obj.var_2c(a0)
-	bsr.w	loc_20E96E
-	bsr.w	sub_20E97C
+	bsr.w	FlipAnimal
+	bsr.w	SetAnimalSpriteTile
 	tst.b	obj.subtype(a0)
 	bmi.s	loc_20E7E2
 	move.w	#$101,obj.var_2e(a0)
@@ -55,7 +55,7 @@ AnimalObject_1_Routine2:
 	bcs.s	loc_20E81A
 	move.b	obj.var_2e(a0),d0
 	neg.b	obj.var_2f(a0)
-	bsr.w	loc_20E96E
+	bsr.w	FlipAnimal
 
 loc_20E81A:
 	move.b	d0,obj.var_2e(a0)
@@ -79,7 +79,7 @@ AnimalObject_1_Routine4:
 	addq.b	#4,obj.var_2e(a0)
 	move.b	obj.var_2e(a0),d0
 	andi.b	#$7F,d0
-	beq.w	loc_20E96E
+	beq.w	FlipAnimal
 	lea	AnimalAnims1(pc),a1
 	jsr	AnimateObject
 	jmp	DrawObject
@@ -121,7 +121,7 @@ AnimalObject_0_Routine0:
 	move.b	#4,obj.sprite_flags(a0)
 	move.l	#$C080408,obj.height(a0)
 	move.l	#AnimalSprites2,obj.sprite_data(a0)
-	bsr.w	sub_20E97C
+	bsr.w	SetAnimalSpriteTile
 	tst.b	obj.subtype(a0)
 	bmi.s	loc_20E8E4
 	move.l	#$10000,obj.var_2c(a0)
@@ -132,7 +132,7 @@ AnimalObject_0_Routine0:
 
 loc_20E8E4:
 	move.b	#8,obj.routine(a0)
-	bra.w	loc_20E96E
+	bra.w	FlipAnimal
 
 ; ------------------------------------------------------------------------------
 
@@ -161,7 +161,7 @@ loc_20E928:
 AnimalObject_0_Routine6:
 	move.b	#2,obj.routine(a0)
 	neg.l	obj.var_2c(a0)
-	bsr.s	loc_20E96E
+	bsr.s	FlipAnimal
 	bra.s	loc_20E928
 
 ; ------------------------------------------------------------------------------
@@ -183,14 +183,14 @@ loc_20E968:
 
 ; ------------------------------------------------------------------------------
 
-loc_20E96E:
+FlipAnimal:
 	bchg	#0,obj.sprite_flags(a0)
 	bchg	#0,obj.flags(a0)
 	rts
 
 ; ------------------------------------------------------------------------------
 
-sub_20E97C:
+SetAnimalSpriteTile:
 	lea	word_20EA50(pc),a1
 	moveq	#0,d0
 	move.b	act,d0

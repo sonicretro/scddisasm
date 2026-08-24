@@ -83,7 +83,7 @@ namespace SCDObjectDefinitions.Common
 			return new Sprite(sprs.ToArray());
 		}
 
-		private PropertySpec[] customProperties = new PropertySpec[] {
+		private PropertySpec[] custom_properties = new PropertySpec[] {
 			new PropertySpec("Count", typeof(int), "Extended", null, null, GetCount, SetCount),
 			new PropertySpec("Direction", typeof(int), "Extended", null, null, typeof(DirectionConverter), GetDirection, SetDirection)
 		};
@@ -92,7 +92,7 @@ namespace SCDObjectDefinitions.Common
 		{
 			get
 			{
-				return customProperties;
+				return custom_properties;
 			}
 		}
 
