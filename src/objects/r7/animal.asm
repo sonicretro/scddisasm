@@ -69,9 +69,9 @@ loc_20E81A:
 
 AnimalObject_1_Routine4:
 	movea.w	obj.var_3e(a0),a1
-	cmpi.b	#$27,0(a1)
+	cmpi.b	#$27,obj.id(a1)
 	bne.w	loc_20E968
-	tst.b	$3F(a1)
+	tst.b	obj.var_3f(a1)
 	bne.w	loc_20E968
 	moveq	#3,d2
 	moveq	#4,d3
@@ -168,9 +168,9 @@ AnimalObject_0_Routine6:
 
 AnimalObject_0_Routine8:
 	movea.w	obj.var_3e(a0),a1
-	cmpi.b	#$27,0(a1)
+	cmpi.b	#$27,obj.id(a1)
 	bne.w	loc_20E968
-	tst.b	$3F(a1)
+	tst.b	obj.var_3f(a1)
 	bne.w	loc_20E968
 	lea	AnimalAnims2(pc),a1
 	jsr	AnimateObject

@@ -60,9 +60,9 @@ loc_20E43E:
 
 loc_20E45A:
 	movea.w	obj.var_3e(a0),a1
-	cmpi.b	#$52,0(a1)
+	cmpi.b	#$52,obj.id(a1)
 	bne.s	loc_20E46C
-	tst.b	$3F(a1)
+	tst.b	obj.var_3f(a1)
 	beq.s	loc_20E472
 
 loc_20E46C:

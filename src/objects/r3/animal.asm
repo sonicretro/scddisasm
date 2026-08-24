@@ -71,9 +71,9 @@ loc_20E734:
 
 AnimalObject_1_Routine4:
 	movea.w	obj.var_3e(a0),a1
-	cmpi.b	#$38,0(a1)
+	cmpi.b	#$38,obj.id(a1)
 	bne.w	loc_20E882
-	tst.b	$3F(a1)
+	tst.b	obj.var_3f(a1)
 	bne.w	loc_20E882
 	moveq	#3,d2
 	moveq	#4,d3

@@ -33,8 +33,8 @@ namespace SCDObjectDefinitions.Common
 
 		public override void Init(ObjectData data)
 		{
-			byte[] artfile = ObjectHelper.OpenArtFile("../src/gfx/ring.nem", CompressionType.Nemesis);
-			img = ObjectHelper.MapASMToBmp(artfile, "../src/sprites/ring.asm", 0, 1);
+			byte[] art_file = ObjectHelper.OpenArtFile("../src/gfx/ring.nem", CompressionType.Nemesis);
+			img = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/ring.asm", 0, 1);
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
