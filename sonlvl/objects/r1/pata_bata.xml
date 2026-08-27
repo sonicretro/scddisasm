@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ObjDef xmlns="http://www.sonicretro.org" Name="Pata-Bata" Image="normal" RememberState="true">
+<ObjDef xmlns="http://www.sonicretro.org" Name="Pata-Bata" Image="normal" RememberState="true" Depth="3">
   <Images>
     <ImageFromMappings id="normal">
       <ArtFile filename="../src/gfx/r1/pata_bata.nem" />

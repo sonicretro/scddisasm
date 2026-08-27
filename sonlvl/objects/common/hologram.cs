@@ -164,5 +164,10 @@ namespace SCDObjectDefinitions.Common
 
 			return new Sprite(sprs.ToArray());
 		}
+		
+		public override int GetDepth(ObjectEntry obj)
+		{
+			return 4;
+		}
 	}
 }

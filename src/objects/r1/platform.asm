@@ -63,7 +63,7 @@ loc_20C90C:
 	move.w	obj.x(a0),obj.x(a1)
 	move.w	obj.y(a0),obj.y(a1)
 	subi.w	#$10,obj.y(a1)
-	move.b	#$F0,obj.var_39(a1)
+	move.b	#-$10,obj.var_39(a1)
 	move.w	a0,obj.var_34(a1)
 	move.b	obj.subtype_2(a0),d0
 	move.b	d0,d1
@@ -83,7 +83,7 @@ byte_20C94E:
 	dc.b	$10
 	dc.b	$20
 	dc.b	$30
-	dc.b	0
+	even
 
 byte_20C952:
 	dc.b	2

@@ -10,16 +10,16 @@ namespace SCDObjectDefinitions.Common
 {
 	public class RobotTransporter : ObjectDefinition
 	{
-		private Sprite img_present;
-		private Sprite img_past;
+		private Sprite img_acd;
+		private Sprite img_b;
 
 		public override void Init(ObjectData data)
 		{
 			byte[] art_file = ObjectHelper.OpenArtFile("../src/gfx/robot_transport_a.nem", CompressionType.Nemesis);
-			img_present = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/robot_transport.asm", 2, 0);
+			img_acd = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/robot_transport.asm", 2, 0);
 
 			art_file = ObjectHelper.OpenArtFile("../src/gfx/robot_transport_b.nem", CompressionType.Nemesis);
-			img_past = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/robot_transport.asm", 3, 0);
+			img_b = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/robot_transport.asm", 3, 0);
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
@@ -41,27 +41,25 @@ namespace SCDObjectDefinitions.Common
 		{
 			return string.Empty;
 		}
-		
-		public Sprite SetupSprite(bool present)
-		{
-			if (present)
-				return new Sprite(img_present, false, false);
-			return new Sprite(img_past, false, false);
-		}
 
 		public override Sprite Image
 		{
-			get { return SetupSprite(false); }
+			get { return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Past) ? img_b : img_acd; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return SetupSprite(false);
+			return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Past) ? img_b : img_acd;
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return SetupSprite(LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Present);
+			return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Past) ? img_b : img_acd;
+		}
+		
+		public override int GetDepth(ObjectEntry obj)
+		{
+			return 4;
 		}
 	}
 }

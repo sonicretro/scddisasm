@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Name="Player Hole" Image="hole" RememberState="true" Depth="6" Debug="true">
+  <Images>
+    <ImageFromMappings id="hole">
+      <ArtFile filename="../src/gfx/r1/player_hole.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/player_hole.asm" frame="0" startpal="0" />
+    </ImageFromMappings>
+  </Images>
+</ObjDef>

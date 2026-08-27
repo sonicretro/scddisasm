@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Name="Spikes" Image="spikes" RememberState="false" Depth="3">
+  <Images>
+    <ImageFromMappings id="spikes">
+      <ArtFile filename="../src/gfx/spikes_v2.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/spikes.asm" frame="0" startpal="0" />
+    </ImageFromMappings>
+  </Images>
+</ObjDef>

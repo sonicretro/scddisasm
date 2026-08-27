@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ObjDef xmlns="http://www.sonicretro.org" Name="Spring" Image="vertred">
+<ObjDef xmlns="http://www.sonicretro.org" Name="Spring" Image="vertred" Depth="4">
   <Images>
     <ImageFromMappings id="vertred">
       <ArtFile filename="../src/gfx/spring.nem" />

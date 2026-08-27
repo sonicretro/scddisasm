@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ObjDef xmlns="http://www.sonicretro.org" Name="Breakable Wall" Image="wall1" RememberState="true" Depth="1">
+  <Images>
+    <ImageFromMappings id="wall1">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="0" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall2">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="1" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall3">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="2" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall4">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="3" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall5">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="4" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall6">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="5" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall7">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="6" startpal="2" />
+    </ImageFromMappings>
+    <ImageFromMappings id="wall8">
+      <ArtFile filename="../src/gfx/r1/platform.nem" />
+      <MapFile type="ASM" filename="../src/sprites/r1/break_wall.asm" frame="7" startpal="2" />
+    </ImageFromMappings>
+  </Images>
+  <Subtypes>
+    <Subtype id="00" name="Wall 1" image="wall1" />
+    <Subtype id="01" name="Wall 2" image="wall2" />
+    <Subtype id="02" name="Wall 3" image="wall3" />
+    <Subtype id="03" name="Wall 4" image="wall4" />
+    <Subtype id="04" name="Wall 5" image="wall5" />
+    <Subtype id="05" name="Wall 6" image="wall6" />
+    <Subtype id="06" name="Wall 7" image="wall7" />
+    <Subtype id="07" name="Wall 8" image="wall8" />
+  </Subtypes>
+</ObjDef>
