@@ -88,8 +88,8 @@ namespace SCDObjectDefinitions.Common
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
 			if (LevelData.Level.Zone == 6 && ((SCDObjectEntry)obj).SubType2 == 0)
-				return monitors[obj.SubType].sprite_high;
-			return monitors[obj.SubType].sprite_low;
+				return new Sprite(monitors[obj.SubType].sprite_high, obj.XFlip, obj.YFlip);
+			return new Sprite(monitors[obj.SubType].sprite_low, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

@@ -17,7 +17,7 @@ namespace SCDObjectDefinitions.R1
 		public override void Init(ObjectData data)
 		{
 			byte[] art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/3d_boost.nem", CompressionType.Nemesis);
-			img_booster = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/3d_boost.asm", 1, 0);
+			img_booster = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/3d_boost.asm", 0, 0);
 
 			art_file = LevelData.ReadFile("../src/gfx/r1/player.unc", CompressionType.Uncompressed);
 			byte[] map = LevelData.ASMToBin("../src/sprites/r1/player.asm", EngineVersion.SCD);
@@ -58,8 +58,8 @@ namespace SCDObjectDefinitions.R1
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
 			if (((SCDObjectEntry)obj).SubType2 != 0)
-				return new Sprite(img_sonic, obj.SubType != 0, false);
-			return new Sprite(img_booster, obj.SubType != 0, false);
+				return new Sprite(img_sonic, false, false);
+			return new Sprite(img_booster, (obj.SubType != 0) || obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

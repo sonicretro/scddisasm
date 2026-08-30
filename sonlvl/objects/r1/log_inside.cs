@@ -10,21 +10,25 @@ namespace SCDObjectDefinitions.R1
 {
 	public class LogInside : ObjectDefinition
 	{
-		private Sprite img_ab;
-		private Sprite img_cd;
+		private Sprite[] img;
 
 		public override void Init(ObjectData data)
 		{
-			byte[] art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/log_inside_ab.nem", CompressionType.Nemesis);
-			img_ab = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/log_inside.asm", 0, 2);
+			img = new Sprite[2];
 
-			art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/log_inside_cd.nem", CompressionType.Nemesis);
-			img_cd = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/log_inside.asm", 1, 2);
+			byte[] art_file;
+			if (LevelData.Level.TimeZone != SonicRetro.SonLVL.API.TimeZone.Future)
+				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/log_inside_ab.nem", CompressionType.Nemesis);
+			else
+				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/log_inside_cd.nem", CompressionType.Nemesis);
+
+			img[0] = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/log_inside.asm", 0, 2);
+			img[1] = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/log_inside.asm", 1, 2);
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
 		{
-			get { return new ReadOnlyCollection<byte>(new List<byte>()); }
+			get { return new ReadOnlyCollection<byte>(new byte[] { 0, 1 }); }
 		}
 
 		public override string Name
@@ -39,22 +43,24 @@ namespace SCDObjectDefinitions.R1
 
 		public override string SubtypeName(byte subtype)
 		{
-			return string.Empty;
+			if (subtype == 0)
+				return "Present/Past";
+			return "Future";
 		}
 
 		public override Sprite Image
 		{
-			get { return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? img_cd : img_ab; }
+			get { return img[(LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? 1 : 0]; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? img_cd : img_ab;
+			return img[subtype];
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return new Sprite((LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? img_cd : img_ab, obj.XFlip, obj.YFlip);
+			return new Sprite(img[obj.SubType], obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

@@ -28,15 +28,18 @@ namespace SCDObjectDefinitions.R1
 		{
 			scenery = new SceneryData[3];
 			
-			byte[] art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_b.nem", CompressionType.Nemesis);
+			byte[] art_file;
+			if (LevelData.Level.TimeZone != SonicRetro.SonLVL.API.TimeZone.Future)
+				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_b.nem", CompressionType.Nemesis);
+			else
+				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_cd.nem", CompressionType.Nemesis);
+			
 			scenery[0] = new SceneryData(
 				"Branch 1 (Past)",
 				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 0, 2));
 			scenery[1] = new SceneryData(
 				"Branch 2 (Past)",
 				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 1, 2));
-
-			art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_cd.nem", CompressionType.Nemesis);
 			scenery[2] = new SceneryData(
 				"Stem (Future)",
 				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 2, 2));
@@ -64,7 +67,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override Sprite Image
 		{
-			get { return scenery[0].sprite; }
+			get { return scenery[(LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? 2 : 0].sprite; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
