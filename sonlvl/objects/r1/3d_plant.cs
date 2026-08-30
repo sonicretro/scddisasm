@@ -82,7 +82,7 @@ namespace SCDObjectDefinitions.R1
 
 			for (int i = fg_count - 1; i >= 0; i--)
 			{
-				Sprite tmp = new Sprite(img_front);
+				Sprite tmp = new Sprite(img_front, (i == 0) && obj.XFlip, (i == 0) && obj.YFlip);
 
 				Point loc = new Point();
 				loc.X += offsets_front[i];

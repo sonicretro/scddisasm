@@ -45,7 +45,7 @@ namespace SCDObjectDefinitions.R1
 			return string.Empty;
 		}
 
-		public Sprite SetupSprite(byte subtype, byte subtype2)
+		public Sprite SetupSprite(byte subtype, byte subtype2, bool x_flip, bool y_flip)
 		{
 			List<Sprite> sprs = new List<Sprite>();
 
@@ -55,24 +55,24 @@ namespace SCDObjectDefinitions.R1
 				tmp.Offset(new Point(0, -16));
 				sprs.Add(tmp);
 			}
-			sprs.Add(new Sprite(img_platform[Math.Min(2, subtype & 3)]));
+			sprs.Add(new Sprite(img_platform[subtype & 3], x_flip, y_flip));
 
 			return new Sprite(sprs.ToArray());
 		}
 
 		public override Sprite Image
 		{
-			get { return SetupSprite(0, 0); }
+			get { return SetupSprite(0, 0, false, false); }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return SetupSprite(subtype, 0);
+			return SetupSprite(subtype, 0, false, false);
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return SetupSprite(obj.SubType, ((SCDObjectEntry)obj).SubType2);
+			return SetupSprite(obj.SubType, ((SCDObjectEntry)obj).SubType2, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)
@@ -81,7 +81,7 @@ namespace SCDObjectDefinitions.R1
 		}
 
 		private PropertySpec[] custom_properties = new PropertySpec[] {
-			new PropertySpec("Size", typeof(int), "Extended", "The size of the platform", null, new Dictionary<string, int>
+			new PropertySpec("Size", typeof(int), "Extended", "The size of the platform.", null, new Dictionary<string, int>
 				{
 					{ "Small", 0x00 },
 					{ "Medium", 0x01 },

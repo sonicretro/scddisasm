@@ -162,9 +162,9 @@ locret_20EC74:
 
 loc_20EC76:
 	movea.w	obj.var_3e(a0),a1
-	cmpi.b	#$27,0(a1)
+	cmpi.b	#$27,obj.id(a1)
 	bne.w	loc_20EAAA
-	tst.b	$3F(a1)
+	tst.b	obj.var_3f(a1)
 	bne.w	loc_20EAAA
 	tst.b	obj.routine(a0)
 	bne.s	loc_20ECD2

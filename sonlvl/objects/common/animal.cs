@@ -140,7 +140,7 @@ namespace SCDObjectDefinitions.Common
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return animals[LevelData.Level.Zone, obj.SubType & 0x7F].sprite;
+			return new Sprite(animals[LevelData.Level.Zone, obj.SubType & 0x7F].sprite, (LevelData.Level.Zone == 2) && obj.XFlip, (LevelData.Level.Zone == 2) && obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

@@ -73,11 +73,11 @@ namespace SCDObjectDefinitions.R1
 		}
 
 		private PropertySpec[] custom_properties = new PropertySpec[] {
-			new PropertySpec("Flipped", typeof(bool), "Extended", "If true, the marker is flipped horizontally", null,
-				(obj) => { return (obj.SubType & 0x01) == 0x01; },
-				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0x01) | ((bool)value ? 0x01 : 0x00))),
+			new PropertySpec("X Flip (Actual)", typeof(bool), "Extended", "Flips the object horizontally (use this instead of \"X Flip\").", null,
+				(obj) => { return obj.SubType != 0; },
+				(obj, value) => obj.SubType = (byte)((bool)value ? 0x01 : 0x00)),
 
-			new PropertySpec("Type", typeof(int), "Extended", "The type of marker", null, new Dictionary<string, int>
+			new PropertySpec("Type", typeof(int), "Extended", "The type of marker.", null, new Dictionary<string, int>
 				{
 					{ "Booster", 0x00 },
 					{ "Fall", 0x01 },

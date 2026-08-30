@@ -55,7 +55,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return img;
+			return new Sprite(img, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

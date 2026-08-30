@@ -54,7 +54,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? img_cd : img_ab;
+			return new Sprite((LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? img_cd : img_ab, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

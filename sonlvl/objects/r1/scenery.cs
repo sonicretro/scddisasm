@@ -74,7 +74,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return scenery[obj.SubType].sprite;
+			return new Sprite(scenery[obj.SubType].sprite, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

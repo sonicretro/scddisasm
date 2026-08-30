@@ -144,7 +144,7 @@ namespace SCDObjectDefinitions.Common
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
 			List<Sprite> sprs = new List<Sprite>();
-			sprs.Add(new Sprite(img_projector));
+			sprs.Add(new Sprite(img_projector, obj.XFlip, obj.YFlip));
 
 			Sprite tmp = new Sprite(img_light);
 			tmp.Offset(new Point(-21, -7));
