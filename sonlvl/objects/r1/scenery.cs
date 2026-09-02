@@ -10,39 +10,20 @@ namespace SCDObjectDefinitions.R1
 {
 	public class Scenery : ObjectDefinition
 	{
-		private struct SceneryData
-		{
-			public string name;
-			public Sprite sprite;
-
-			public SceneryData(string name, Sprite sprite)
-			{
-				this.name = name;
-				this.sprite = sprite;
-			}
-		}
-
-		private SceneryData[] scenery;
+		private Sprite[] img;
 
 		public override void Init(ObjectData data)
 		{
-			scenery = new SceneryData[3];
-			
 			byte[] art_file;
 			if (LevelData.Level.TimeZone != SonicRetro.SonLVL.API.TimeZone.Future)
 				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_b.nem", CompressionType.Nemesis);
 			else
 				art_file = ObjectHelper.OpenArtFile("../src/gfx/r1/scenery_cd.nem", CompressionType.Nemesis);
 			
-			scenery[0] = new SceneryData(
-				"Branch 1 (Past)",
-				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 0, 2));
-			scenery[1] = new SceneryData(
-				"Branch 2 (Past)",
-				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 1, 2));
-			scenery[2] = new SceneryData(
-				"Stem (Future)",
-				ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 2, 2));
+			img = new Sprite[3];
+			img[0] = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 0, 2);
+			img[1] = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 1, 2);
+			img[2] = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/r1/scenery.asm", 2, 2);
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
@@ -60,24 +41,42 @@ namespace SCDObjectDefinitions.R1
 			get { return false; }
 		}
 
+		public override byte DefaultSubtype
+		{
+			get { return (byte)((LevelData.Level.TimeZone != SonicRetro.SonLVL.API.TimeZone.Future) ? 0 : 2); }
+		}
+
 		public override string SubtypeName(byte subtype)
 		{
-			return scenery[subtype].name;
+			switch (subtype)
+			{
+				case 0:
+					return "Branch 1 (Past)";
+
+				case 1:
+					return "Branch 2 (Past)";
+
+				case 2:
+					return "Stem (Future)";
+			}
+			return string.Empty;
 		}
 
 		public override Sprite Image
 		{
-			get { return scenery[(LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Future) ? 2 : 0].sprite; }
+			get { return img[DefaultSubtype]; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return scenery[subtype].sprite;
+			if (subtype < img.Length)
+				return img[subtype];
+			return ObjectHelper.UnknownObject;
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return new Sprite(scenery[obj.SubType].sprite, obj.XFlip, obj.YFlip);
+			return new Sprite(SubtypeImage(obj.SubType), obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

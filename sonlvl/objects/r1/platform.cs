@@ -45,34 +45,32 @@ namespace SCDObjectDefinitions.R1
 			return string.Empty;
 		}
 
-		public Sprite SetupSprite(byte subtype, byte subtype2, bool x_flip, bool y_flip)
-		{
-			List<Sprite> sprs = new List<Sprite>();
-
-			if (subtype2 > 0)
-			{
-				Sprite tmp = new Sprite(img_spring[subtype2 >> 1]);
-				tmp.Offset(new Point(0, -16));
-				sprs.Add(tmp);
-			}
-			sprs.Add(new Sprite(img_platform[subtype & 3], x_flip, y_flip));
-
-			return new Sprite(sprs.ToArray());
-		}
-
 		public override Sprite Image
 		{
-			get { return SetupSprite(0, 0, false, false); }
+			get { return img_platform[0]; }
 		}
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return SetupSprite(subtype, 0, false, false);
+			subtype &= 3;
+			if (subtype < img_platform.Length)
+				return img_platform[subtype];
+			return ObjectHelper.UnknownObject;
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return SetupSprite(obj.SubType, ((SCDObjectEntry)obj).SubType2, obj.XFlip, obj.YFlip);
+			List<Sprite> sprs = new List<Sprite>();
+
+			if (((SCDObjectEntry)obj).SubType2 != 0)
+			{
+				Sprite tmp = new Sprite(img_spring[(((SCDObjectEntry)obj).SubType2 >> 1) & 1]);
+				tmp.Offset(new Point(0, -16));
+				sprs.Add(tmp);
+			}
+			sprs.Add(new Sprite(SubtypeImage(obj.SubType), obj.XFlip, obj.YFlip));
+
+			return new Sprite(sprs.ToArray());
 		}
 		
 		public override int GetDepth(ObjectEntry obj)
@@ -83,50 +81,50 @@ namespace SCDObjectDefinitions.R1
 		private PropertySpec[] custom_properties = new PropertySpec[] {
 			new PropertySpec("Size", typeof(int), "Extended", "The size of the platform.", null, new Dictionary<string, int>
 				{
-					{ "Small", 0x00 },
-					{ "Medium", 0x01 },
-					{ "Large", 0x02 }
+					{ "Small", 0 },
+					{ "Medium", 1 },
+					{ "Large", 2 }
 				},
-				(obj) => { return Math.Min(obj.SubType & 0x03, 0x02); },
-				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0x03) | ((int)value & 0x03))),
+				(obj) => { return obj.SubType & 3; },
+				(obj, value) => obj.SubType = (byte)((obj.SubType & ~3) | ((int)value & 3))),
 
 			new PropertySpec("Range", typeof(int), "Extended", "The platform's range of motion.", null, new Dictionary<string, int>
 				{
-					{ "32px", 0x00 },
-					{ "48px", 0x01 },
-					{ "64px", 0x02 },
-					{ "96px", 0x03 }
+					{ "32px", 0 },
+					{ "48px", 1 },
+					{ "64px", 2 },
+					{ "96px", 3 }
 				},
-				(obj) => { return (obj.SubType & 0x0C) >> 2; },
-				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0x0C) | (((int)value & 0x03) << 2))),
+				(obj) => { return (obj.SubType & 0xC) >> 2; },
+				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0xC) | (((int)value & 3) << 2))),
 
 			new PropertySpec("Direction", typeof(int), "Extended", "The platform's direction of motion.", null, new Dictionary<string, int>
 				{
-					{ "Vertical", 0x00 },
-					{ "Horizontal", 0x01 },
-					{ "Diagonal (Up Left -> Down Right)", 0x02 },
-					{ "Diagonal (Up Right -> Down Left)", 0x03 },
-					{ "Stationary", 0x04 },
-					{ "Down (When Stood On)", 0x05 },
-					{ "Nudge Up (When Stood On)", 0x06 },
-					{ "Up (When Stood On)", 0x07 },
-					{ "Nudge Right (When Stood On)", 0x08 },
-					{ "Nudge Left (When Stood On)", 0x09 }
+					{ "Vertical", 0 },
+					{ "Horizontal", 1 },
+					{ "Diagonal (Up Left -> Down Right)", 2 },
+					{ "Diagonal (Up Right -> Down Left)", 3 },
+					{ "Stationary", 4 },
+					{ "Down (When Stood On)", 5 },
+					{ "Nudge Up (When Stood On)", 6 },
+					{ "Up (When Stood On)", 7 },
+					{ "Nudge Right (When Stood On)", 8 },
+					{ "Nudge Left (When Stood On)", 9 }
 				},
 				(obj) => { return (obj.SubType & 0xF0) >> 4; },
-				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0xF0) | (((int)value & 0x0F) << 4))),
+				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0xF0) | (((int)value & 0xF) << 4))),
 
 			new PropertySpec("Spring", typeof(bool), "Extended", "If true, a spring is placed on top of the platform.", null,
-				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 0x01) == 0x01; },
-				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~0x01) | ((bool)value ? 0x01 : 0x00))),
+				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 1) == 1; },
+				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~1) | ((bool)value ? 1 : 0))),
 
 			new PropertySpec("Spring Color", typeof(int), "Extended", "The color of the platform's spring, if it exists.", null, new Dictionary<string, int>
 				{
-					{ "Red", 0x00 },
-					{ "Yellow", 0x01 },
+					{ "Red", 0 },
+					{ "Yellow", 1 },
 				},
-				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 0x02) >> 1; },
-				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~0x02) | (((int)value & 0x01) << 1)))
+				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 2) >> 1; },
+				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~2) | (((int)value & 1) << 1)))
 		};
 
 		public override PropertySpec[] CustomProperties

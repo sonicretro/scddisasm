@@ -25,12 +25,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override string Name
 		{
-			get
-			{
-				if (LevelData.Level.Zone != 0)
-					return "Door (Horizontal, Palmtree Panic)";
-				return "Door (Horizontal)";
-			}
+			get { return (LevelData.Level.Zone == 0) ? "Door (Horizontal)" : "Door (Palmtree Panic)"; }
 		}
 
 		public override bool RememberState
@@ -40,12 +35,18 @@ namespace SCDObjectDefinitions.R1
 
 		public override string SubtypeName(byte subtype)
 		{
-			string[] names = {
-				"Splash (44px Wide)",
-				"No Splash (44px Wide)",
-				"No Splash (24px Wide)"
-			};
-			return names[subtype];
+			switch (subtype)
+			{
+				case 0:
+					return "Splash (44px Wide)";
+					
+				case 1:
+					return "No Splash (44px Wide)";
+					
+				case 2:
+					return "No Splash (24px Wide)";
+			}
+			return string.Empty;
 		}
 
 		public override Sprite Image

@@ -25,12 +25,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override string Name
 		{
-			get
-			{
-				if (LevelData.Level.Zone != 0)
-					return "Boulder (Palmtree Panic)";
-				return "Boulder";
-			}
+			get { return (LevelData.Level.Zone == 0) ? "Boulder" : "Boulder (Palmtree Panic)"; }
 		}
 
 		public override bool RememberState

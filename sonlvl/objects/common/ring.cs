@@ -100,34 +100,34 @@ namespace SCDObjectDefinitions.Common
 
 		private PropertySpec[] custom_properties = new PropertySpec[] {
 			new PropertySpec("Count", typeof(int), "Extended", "The number of rings.", null,
-				(obj) => { return Math.Min(6, obj.SubType & 7) + 1; },
-				(obj, value) => obj.SubType = (byte)((obj.SubType & ~7) | (Math.Min((int)value, 7) - 1))),
+				(obj) => { return Math.Min(obj.SubType & 7, 6) + 1; },
+				(obj, value) => obj.SubType = (byte)((obj.SubType & ~7) | Math.Min(Math.Max((int)value - 1, 0), 6))),
 
 			new PropertySpec("Direction", typeof(int), "Extended", "The direction of ring placement.", null, new Dictionary<string, int>()
 				{
-					{ "Right (Short)", 0x00 },
-					{ "Right (Medium)", 0x01 },
-					{ "Right (Far)", 0x02 },
-					{ "Down (Short)", 0x03 },
-					{ "Down (Medium)", 0x04 },
-					{ "Down (Far)", 0x05 },
-					{ "Down-Right (Short)", 0x06 },
-					{ "Down-Right (Medium)", 0x07 },
-					{ "Down-Right (Far)", 0x08 },
-					{ "Down-Left (Short)", 0x09 },
-					{ "Down-Left (Medium)", 0x0A },
-					{ "Down-Left (Far)", 0x0B },
-					{ "Down-Right-Right (Short)", 0x0C },
-					{ "Down-Right-Right (Medium)", 0x0D },
-					{ "Down-Left-Left (Short)", 0x0E },
-					{ "Down-Left-Left (Medium)", 0x0F }
+					{ "Right (Short)", 0 },
+					{ "Right (Medium)", 1 },
+					{ "Right (Far)", 2 },
+					{ "Down (Short)", 3 },
+					{ "Down (Medium)", 4 },
+					{ "Down (Far)", 5 },
+					{ "Down-Right (Short)", 6 },
+					{ "Down-Right (Medium)", 7 },
+					{ "Down-Right (Far)", 8 },
+					{ "Down-Left (Short)", 9 },
+					{ "Down-Left (Medium)", 0xA },
+					{ "Down-Left (Far)", 0xB },
+					{ "Down-Right-Right (Short)", 0xC },
+					{ "Down-Right-Right (Medium)", 0xD },
+					{ "Down-Left-Left (Short)", 0xE },
+					{ "Down-Left-Left (Medium)", 0xF }
 				},
 				(obj) => { return (obj.SubType >> 4) & 0xF; },
 				(obj, value) => obj.SubType = (byte)((obj.SubType & ~0xF0) | (((int)value & 0xF) << 4))),
 
 			new PropertySpec("Back Layer", typeof(bool), "Extended", "If true, the rings are placed on the back layer (Metallic Madness only).", null,
-				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 0x01) == 0x01; },
-				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~0x01) | ((bool)value ? 0x01 : 0x00)))
+				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 1) == 1; },
+				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~1) | ((bool)value ? 1 : 0)))
 		};
 
 		public override PropertySpec[] CustomProperties

@@ -17,7 +17,7 @@ namespace SCDObjectDefinitions.R1
 			-0x80
 		};
 		private int[] offsets_back = {
-			0x00,
+			0,
 			0x60,
 			-0x60
 		};

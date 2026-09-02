@@ -25,12 +25,7 @@ namespace SCDObjectDefinitions.R1
 
 		public override string Name
 		{
-			get
-			{
-				if (LevelData.Level.Zone != 0)
-					return "Block (Palmtree Panic)";
-				return "Block";
-			}
+			get { return (LevelData.Level.Zone == 0) ? "Block" : "Block (Palmtree Panic)"; }
 		}
 
 		public override bool RememberState

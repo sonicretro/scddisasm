@@ -49,12 +49,12 @@ namespace SCDObjectDefinitions.Common
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return (LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Past) ? img_b : img_acd;
+			return Image;
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
-			return new Sprite((LevelData.Level.TimeZone == SonicRetro.SonLVL.API.TimeZone.Past) ? img_b : img_acd, obj.XFlip, obj.YFlip);
+			return new Sprite(Image, obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)

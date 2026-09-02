@@ -10,33 +10,17 @@ namespace SCDObjectDefinitions.Common
 {
 	public class MonitorTime : ObjectDefinition
 	{
-		private static Dictionary<string, int> types = new Dictionary<string, int>()
-		{
-			{ "1-UP", 0x00 },
-			{ "Rings", 0x01 },
-			{ "Shield", 0x02 },
-			{ "Invincibility", 0x03 },
-			{ "Speed Shoes", 0x04 },
-			{ "Stopwatch", 0x05 },
-			{ "Combine Ring", 0x06 },
-			{ "S", 0x07 },
-			{ "Past Time Post", 0x08 },
-			{ "Future Time Post", 0x09 }
-		};
-
 		private struct MonitorTimeData
 		{
 			public string name;
 			public Sprite sprite_low;
 			public Sprite sprite_high;
 
-			public MonitorTimeData(string name, int type, byte[] art_file)
+			public MonitorTimeData(string name, int frame, byte[] art_file)
 			{
-				int[] frames = { 0, 1, 2, 3, 4, 5, 6, 7, 10, 12 };
-
 				this.name = name;
-				this.sprite_low = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/monitor_time.asm", frames[type], 0, false);
-				this.sprite_high = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/monitor_time.asm", frames[type], 0, true);
+				this.sprite_low = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/monitor_time.asm", frame, 0, false);
+				this.sprite_high = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/monitor_time.asm", frame, 0, true);
 			}
 		}
 
@@ -49,10 +33,36 @@ namespace SCDObjectDefinitions.Common
 			img = ObjectHelper.MapASMToBmp(art_file, "../src/sprites/monitor_time.asm", 8, 0);
 
 			monitors = new MonitorTimeData[10];
-			foreach (KeyValuePair<string, int> pair in types)
-			{
-				monitors[pair.Value] = new MonitorTimeData(pair.Key, pair.Value, art_file);
-			}
+			monitors[0] = new MonitorTimeData(
+				"1-UP", 0, art_file
+			);
+			monitors[1] = new MonitorTimeData(
+				"Rings", 1, art_file
+			);
+			monitors[2] = new MonitorTimeData(
+				"Shield", 2, art_file
+			);
+			monitors[3] = new MonitorTimeData(
+				"Invincibility", 3, art_file
+			);
+			monitors[4] = new MonitorTimeData(
+				"Speed Shoes", 4, art_file
+			);
+			monitors[5] = new MonitorTimeData(
+				"Stopwatch", 5, art_file
+			);
+			monitors[6] = new MonitorTimeData(
+				"Combine Ring", 6, art_file
+			);
+			monitors[7] = new MonitorTimeData(
+				"S", 7, art_file
+			);
+			monitors[8] = new MonitorTimeData(
+				"Past Time Post", 10, art_file
+			);
+			monitors[9] = new MonitorTimeData(
+				"Future Time Post", 12, art_file
+			);
 		}
 
 		public override ReadOnlyCollection<byte> Subtypes
@@ -72,7 +82,9 @@ namespace SCDObjectDefinitions.Common
 
 		public override string SubtypeName(byte subtype)
 		{
-			return monitors[subtype].name;
+			if (subtype < monitors.Length)
+				return monitors[subtype].name;
+			return string.Empty;
 		}
 
 		public override Sprite Image
@@ -82,14 +94,20 @@ namespace SCDObjectDefinitions.Common
 
 		public override Sprite SubtypeImage(byte subtype)
 		{
-			return monitors[subtype].sprite_low;
+			if (subtype < monitors.Length)
+				return monitors[subtype].sprite_low;
+			return ObjectHelper.UnknownObject;
 		}
 
 		public override Sprite GetSprite(ObjectEntry obj)
 		{
 			if (LevelData.Level.Zone == 6 && ((SCDObjectEntry)obj).SubType2 == 0)
-				return new Sprite(monitors[obj.SubType].sprite_high, obj.XFlip, obj.YFlip);
-			return new Sprite(monitors[obj.SubType].sprite_low, obj.XFlip, obj.YFlip);
+			{
+				if (obj.SubType < monitors.Length)
+					return new Sprite(monitors[obj.SubType].sprite_high, obj.XFlip, obj.YFlip);
+				return ObjectHelper.UnknownObject;
+			}
+			return new Sprite(SubtypeImage(obj.SubType), obj.XFlip, obj.YFlip);
 		}
 		
 		public override int GetDepth(ObjectEntry obj)
@@ -100,13 +118,9 @@ namespace SCDObjectDefinitions.Common
 		}
 
 		private PropertySpec[] custom_properties = new PropertySpec[] {
-			new PropertySpec("Type", typeof(int), "Extended", "The type of monitor/time post.", null, types,
-				(obj) => { return obj.SubType; },
-				(obj, value) => obj.SubType = (byte)value),
-
 			new PropertySpec("Back Layer", typeof(bool), "Extended", "If true, the monitor/time post is placed on the back layer (Metallic Madness only).", null,
-				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 0x01) == 0x01; },
-				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~0x01) | ((bool)value ? 0x01 : 0x00)))
+				(obj) => { return (((SCDObjectEntry)obj).SubType2 & 1) == 1; },
+				(obj, value) => ((SCDObjectEntry)obj).SubType2 = (byte)((((SCDObjectEntry)obj).SubType2 & ~1) | ((bool)value ? 1 : 0)))
 		};
 
 		public override PropertySpec[] CustomProperties
